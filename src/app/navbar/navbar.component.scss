@@ -1,0 +1,46 @@
+.navbar {
+  background-color: #343a40 !important;
+  .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+
+    i {
+      color: white; // icons color
+    }
+  }
+
+  .navbar-brand,
+  .nav-link {
+    color: white !important; // links color
+
+    &:hover {
+      color: #ccc !important;
+    }
+  }
+
+  .navbar-brand img {
+    width: 50px;
+    height: 50px;
+    border-radius: 40%;
+    object-fit: cover;
+  }
+
+  .form-control {
+    margin-right: 10px;
+    border-color: white; // search field border color
+
+    &::placeholder {
+      color: #bbb;
+    }
+  }
+
+  .btn-outline-primary {
+    border-color: white;
+    color: white;
+    background-color: transparent;
+
+    &:hover {
+      background-color: white;
+      color: #343a40;
+    }
+  }
+}
