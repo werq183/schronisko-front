@@ -1,5 +1,9 @@
+$light-blue: #51B7AE;
+$dark-blue: #041B2C;
+$grey: #343a40;
+
 .navbar {
-  background-color: #343a40 !important;
+  background-color: $grey;
   .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.1);
 
