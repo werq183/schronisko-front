@@ -3,12 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {NavbarComponent} from "./navbar/navbar.component";
 import {FooterComponent} from "./footer/footer.component";
-import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
+import {NgbAccordionModule} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, MdbCollapseModule],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, NgbAccordionModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 
