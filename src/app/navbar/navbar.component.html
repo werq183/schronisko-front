@@ -27,6 +27,13 @@
         <input type="search" class="form-control" placeholder="Wpisz zapytanie" aria-label="Search" />
         <button class="btn btn-outline-primary" type="button">Wyszukaj</button>
       </form>
+      <div class="ml-auto" *ngIf="isLoggedIn$ | async; else notLoggedIn">
+        <i class="fas fa-user-circle" style="font-size: 24px; cursor: pointer;" (click)="router.navigate(['/profile'])"></i>
+        <button mat-button (click)="logout()">Wyloguj</button>
+      </div>
+      <ng-template #notLoggedIn>
+        <button class="btn btn-outline-primary" (click)="login()">Zaloguj się</button>
+      </ng-template>
     </div>
   </div>
 </nav>
