@@ -1,6 +1,6 @@
 // auth.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -38,11 +38,14 @@ export class AuthService {
     );
   }
 
-  logout(): void {
-    this.http.post<any>(`${this.apiUrl}/logout`, {}).subscribe(() => {
-      localStorage.removeItem('token');
-      this.loggedIn.next(false);
-      this.router.navigate(['/login']);
-    });
+  logout(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
+    return this.http.post<any>(`${this.apiUrl}/logout`, {}, { headers }).pipe(
+      tap(() => {
+        localStorage.removeItem('token');
+        this.loggedIn.next(false);
+      })
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AsyncPipe, NgIf, NgOptimizedImage } from "@angular/common";
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -22,18 +22,21 @@ export class NavbarComponent {
   public isMenuCollapsed = true;
   isLoggedIn$ = this.authService.isLoggedIn;
 
-  constructor(private authService: AuthService, protected router: Router) {}  // Wstrzyknij Router
+  constructor(private authService: AuthService, protected router: Router) {}
 
   toggleMenu() {
     this.isMenuCollapsed = !this.isMenuCollapsed;
   }
 
   login() {
-    this.router.navigate(['/login']);  // Użyj Router do nawigacji
+    this.router.navigate(['/login']);
   }
 
   logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);  // Przekieruj do strony logowania po wylogowaniu
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['/login']);
+    }, (err) => {
+      console.error('Error during logout', err);
+    });
   }
 }
