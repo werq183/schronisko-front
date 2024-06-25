@@ -1,5 +1,9 @@
+$light-blue: #51B7AE;
+$dark-blue: #041B2C;
+$grey: #65717B;
+
 .navbar {
-  background-color: #343a40 !important;
+  background-color: $grey;
   .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.1);
 
@@ -11,7 +15,7 @@
   .navbar-brand,
   .nav-link {
     color: white !important; // links color
-
+    cursor: pointer !important;
     &:hover {
       color: #ccc !important;
     }
@@ -37,10 +41,10 @@
     border-color: white;
     color: white;
     background-color: transparent;
-
+    margin-right: 5px;
     &:hover {
       background-color: white;
-      color: #343a40;
+      color: $grey;
     }
   }
 }

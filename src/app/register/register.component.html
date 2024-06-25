@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="register-container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+      <div class="form-group">
+        <label for="username">Nazwa użytkownika</label>
+        <input id="username" formControlName="username" type="text" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" type="email" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Hasło</label>
+        <input id="password" formControlName="password" type="password" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Potwierdź hasło</label>
+        <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control" required>
+        <div *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('confirmPassword')?.touched" class="text-danger">
+          Hasła się nie zgadzają.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Zarejestruj się</button>
+      <p>Masz już konto? <a routerLink="/login">Zaloguj się</a></p>
+    </form>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
+  </div>
+</div>

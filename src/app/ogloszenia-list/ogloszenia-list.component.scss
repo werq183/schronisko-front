@@ -1,0 +1,27 @@
+.ogloszenia-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .ogloszenie-card {
+    width: 48%; // Dostosuj szerokość w zależności od wymagań
+    margin-bottom: 20px; // Odstępy między kartami
+
+    img {
+      width: 100%; // Zdjęcia będą rozciągać się na całą szerokość karty
+      height: auto;
+      border-radius: 8px; // Lekko zaokrąglone rogi dla zdjęć
+    }
+
+    p {
+      text-align: center; // Wyśrodkowanie tekstu
+      margin-top: 10px; // Odstęp między zdjęciem a tekstem
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ogloszenia-container .ogloszenie-card {
+    width: 100%; // Na mniejszych ekranach każda karta zajmuje całą szerokość
+  }
+}

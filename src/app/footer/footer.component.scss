@@ -1,0 +1,44 @@
+$light-blue: #51B7AE;
+$dark-blue: #041B2C;
+$grey: #65717B;
+
+footer {
+  background-color: $grey;
+  color: white;
+  padding: 20px 0;
+
+  img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  a {
+    color: white;
+    border-radius: 50%;
+    &:hover {
+      color: $light-blue;
+      text-decoration: none;
+    }
+  }
+
+  i {
+    color: inherit;
+  }
+}
+
+.fcol {
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem 0 2rem;
+}
+
+.text-center {
+  a {
+    color: white;
+    &:hover {
+      color: $light-blue;
+    }
+  }
+}

@@ -1,17 +1,43 @@
 import { Component } from '@angular/core';
-import {MdbCollapseModule} from "mdb-angular-ui-kit/collapse";
-import {NgOptimizedImage} from "@angular/common";
+import { AsyncPipe, NgIf, NgOptimizedImage } from "@angular/common";
+import { MatButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { AuthService } from "../auth.service";
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    MdbCollapseModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatButton,
+    MatTooltip,
+    NgIf,
+    AsyncPipe,
+    RouterLink,
   ],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  public isMenuCollapsed = true;
+  isLoggedIn$ = this.authService.isLoggedIn;
 
+  constructor(private authService: AuthService, protected router: Router) {}
+
+  toggleMenu() {
+    this.isMenuCollapsed = !this.isMenuCollapsed;
+  }
+
+  login() {
+    this.router.navigate(['/login']);
+  }
+
+  logout() {
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['']);
+    }, (err) => {
+      console.error('Error during logout', err);
+    });
+  }
 }
