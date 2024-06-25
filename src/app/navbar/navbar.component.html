@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="/logo.png" alt="Logo" height="768" width="768"></a>
+    <a class="navbar-brand" href="#"><img src="/logo.png" fetchPriority="high" alt="Logo" height="768" width="768"></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -29,7 +29,7 @@
       </form>
       <div class="ml-auto" *ngIf="isLoggedIn$ | async; else notLoggedIn">
         <button class="btn btn-outline-primary" (click)="logout()">Wyloguj</button>
-        <i class="fas fa-user-circle" style="font-size: 24px; cursor: pointer;" (click)="router.navigate(['/profile'])"></i>
+        <i class="fas fa-user-circle" style="font-size: 24px; cursor: pointer; color: #FFFFFF" (click)="router.navigate(['/profile'])"></i>
       </div>
       <ng-template #notLoggedIn>
         <button class="btn btn-outline-primary" (click)="login()">Zaloguj się</button>
