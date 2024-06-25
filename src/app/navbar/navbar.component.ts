@@ -3,7 +3,7 @@ import { AsyncPipe, NgIf, NgOptimizedImage } from "@angular/common";
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { AuthService } from "../auth.service";
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
     MatTooltip,
     NgIf,
     AsyncPipe,
+    RouterLink,
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']

@@ -15,7 +15,7 @@ $grey: #65717B;
   .navbar-brand,
   .nav-link {
     color: white !important; // links color
-
+    cursor: pointer !important;
     &:hover {
       color: #ccc !important;
     }

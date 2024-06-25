@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="/logo.png" fetchPriority="high" alt="Logo" height="768" width="768"></a>
+    <a class="navbar-brand" routerLink=""><img src="/logo.png" fetchPriority="high" alt="Logo" height="768" width="768"></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -14,13 +14,10 @@
     <div class="navbar-collapse" [class.collapse]="isMenuCollapsed" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Strona główna</a>
+          <a class="nav-link active" aria-current="page" routerLink="" >Strona główna</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled link</a>
+          <a class="nav-link" routerLink="/ogloszenia" >Ogłoszenia</a>
         </li>
       </ul>
       <form class="d-flex input-group w-auto">
@@ -29,7 +26,7 @@
       </form>
       <div class="ml-auto" *ngIf="isLoggedIn$ | async; else notLoggedIn">
         <button class="btn btn-outline-primary" (click)="logout()">Wyloguj</button>
-        <i class="fas fa-user-circle" style="font-size: 24px; cursor: pointer; color: #FFFFFF" (click)="router.navigate(['/profile'])"></i>
+        <i class="fas fa-user-circle" style="font-size: 24px; cursor: pointer; color: #FFFFFF" routerLink="/profile"></i>
       </div>
       <ng-template #notLoggedIn>
         <button class="btn btn-outline-primary" (click)="login()">Zaloguj się</button>
