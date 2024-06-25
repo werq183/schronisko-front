@@ -35,7 +35,7 @@ export class NavbarComponent {
 
   logout() {
     this.authService.logout().subscribe(() => {
-      this.router.navigate(['/login']);
+      this.router.navigate(['']);
     }, (err) => {
       console.error('Error during logout', err);
     });
