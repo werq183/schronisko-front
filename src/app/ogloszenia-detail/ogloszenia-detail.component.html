@@ -1,1 +1,15 @@
-<p>ogloszenia-detail works!</p>
+<div class="container mt-4" *ngIf="ogloszenie">
+  <div class="card">
+    <img class="card-img-top" [src]="ogloszenie.zdjecie_set[0]?.dane" alt="Zdjęcie kota {{ ogloszenie.kot.imie }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ ogloszenie.kot.imie }}</h5>
+      <p class="card-text"><strong>Płeć:</strong> {{ ogloszenie.kot.plec }}</p>
+      <p class="card-text"><strong>Kolor:</strong> {{ ogloszenie.kot.kolor }}</p>
+      <p class="card-text"><strong>Sierść:</strong> {{ ogloszenie.kot.siersc }}</p>
+      <p class="card-text"><strong>Rasa:</strong> {{ ogloszenie.kot.rasa }}</p>
+      <p class="card-text"><strong>Wiek:</strong> {{ ogloszenie.kot.wiek }} lat(a)</p>
+      <p class="card-text"><strong>Opis:</strong> {{ ogloszenie.opis }}</p>
+      <button class="btn btn-primary" (click)="reserve()">Rezerwuj</button>
+    </div>
+  </div>
+</div>
