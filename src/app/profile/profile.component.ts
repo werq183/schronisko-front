@@ -36,7 +36,16 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile(): void {
-    this.profileService.updateProfile(this.profile).subscribe({
+    let updateData = {
+      user: {
+        email: this.profile.user.email
+      },
+      adres_1: this.profile.adres_1,
+      adres_2: this.profile.adres_2,
+      nr_tel: this.profile.nr_tel
+    };
+
+    this.profileService.updateProfile(updateData).subscribe({
       next: (data) => {
         this.profile = data;
         this.error = null;

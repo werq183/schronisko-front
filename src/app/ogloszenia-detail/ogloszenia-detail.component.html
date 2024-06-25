@@ -9,7 +9,17 @@
       <p class="card-text"><strong>Rasa:</strong> {{ ogloszenie.kot.rasa }}</p>
       <p class="card-text"><strong>Wiek:</strong> {{ ogloszenie.kot.wiek }} lat(a)</p>
       <p class="card-text"><strong>Opis:</strong> {{ ogloszenie.opis }}</p>
-      <button class="btn btn-primary" (click)="reserve()">Rezerwuj</button>
+      <button class="btn btn-primary" (click)="reserve()" [disabled]="ogloszenie.is_reserved || !userProfileCompleted">Rezerwuj</button>
+      <div *ngIf="reservationSuccess" class="alert alert-success mt-3" role="alert">
+        Rezerwacja wykonana pomyślnie!
+      </div>
+      <div *ngIf="reservationError" class="alert alert-danger mt-3" role="alert">
+        {{ reservationError }}
+      </div>
+      <div *ngIf="!userProfileCompleted && !reservationSuccess" class="mt-3">
+        <p>Proszę uzupełnić profil użytkownika przed dokonaniem rezerwacji.</p>
+        <a routerLink="/profile" class="btn btn-link">Uzupełnij profil</a>
+      </div>
     </div>
   </div>
 </div>

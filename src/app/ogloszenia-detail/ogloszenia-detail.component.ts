@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OgloszeniaService } from '../ogloszenia.service';
-import {NgIf} from "@angular/common";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: 'app-ogloszenia-detail',
@@ -14,6 +14,9 @@ import {NgIf} from "@angular/common";
 })
 export class OgloszeniaDetailComponent implements OnInit {
   ogloszenie: any;
+  userProfileCompleted: boolean = false;
+  reservationSuccess: boolean = false;
+  reservationError: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +25,7 @@ export class OgloszeniaDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOgloszenie();
+    this.checkUserProfile();
   }
 
   getOgloszenie(): void {
@@ -31,8 +35,30 @@ export class OgloszeniaDetailComponent implements OnInit {
     });
   }
 
+  checkUserProfile(): void {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.ogloszeniaService.getUserProfile().subscribe(profile => {
+        this.userProfileCompleted = profile.adres_1 && profile.nr_tel;
+      });
+    }
+  }
+
   reserve(): void {
-    // Tutaj zostanie dodana logika rezerwacji
-    console.log('Rezerwacja:', this.ogloszenie.id);
+    if (!this.userProfileCompleted) {
+      alert('Proszę uzupełnić profil użytkownika przed dokonaniem rezerwacji.');
+      return;
+    }
+
+    this.ogloszeniaService.reserveOgloszenie(this.ogloszenie.id).subscribe({
+      next: () => {
+        this.reservationSuccess = true;
+        this.reservationError = null;
+        this.ogloszenie.is_reserved = true;
+      },
+      error: (err) => {
+        this.reservationError = 'Nie udało się zarezerwować tego ogłoszenia. Spróbuj ponownie później.';
+      }
+    });
   }
 }
