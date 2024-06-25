@@ -17,6 +17,7 @@ export class OgloszeniaDetailComponent implements OnInit {
   userProfileCompleted: boolean = false;
   reservationSuccess: boolean = false;
   reservationError: string | null = null;
+  alreadyReservedMessage: string | null = null; // Dodano do wyświetlania informacji o rezerwacji
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,9 @@ export class OgloszeniaDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id')!;
     this.ogloszeniaService.getOgloszenieById(id).subscribe(ogloszenie => {
       this.ogloszenie = ogloszenie;
+      if (this.ogloszenie.is_reserved) {
+        this.alreadyReservedMessage = "To ogłoszenie jest już zarezerwowane.";
+      }
     });
   }
 
