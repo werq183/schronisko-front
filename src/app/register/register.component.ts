@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -9,7 +9,8 @@ import {NgIf} from "@angular/common";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'

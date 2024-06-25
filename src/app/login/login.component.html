@@ -10,6 +10,7 @@
         <input id="password" formControlName="password" type="password" class="form-control" required>
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Zaloguj się</button>
+      <p>Nie masz jeszcze konta? <a routerLink="/register">Zarejestruj się</a></p>
     </form>
     <div *ngIf="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
   </div>
